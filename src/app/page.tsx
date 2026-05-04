@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { ExperienceCard } from "@/components/ExperienceCard";
 import {
-  coreCompetencies,
+  certifications,
+  education,
   experiences,
+  previousCareers,
   profile,
-  projects,
+  skillGroups,
 } from "@/data/resumeData";
 
 export default function HomePage() {
@@ -12,26 +14,29 @@ export default function HomePage() {
     <main className="mx-auto w-full max-w-content px-6 py-20 sm:py-28">
       <Hero />
 
-      <Section id="competencies" title="Core Competencies" eyebrow="01">
+      <Section id="about" title="About" eyebrow="01">
+        <div className="space-y-4 text-base leading-relaxed text-zinc-300 sm:text-lg">
+          {profile.introduction.map((line) => (
+            <p key={line}>{line}</p>
+          ))}
+        </div>
+      </Section>
+
+      <Section id="skills" title="Skills & Tools" eyebrow="02">
         <ul className="grid gap-4 sm:grid-cols-2 sm:gap-5">
-          {coreCompetencies.map((competency) => (
+          {skillGroups.map((group) => (
             <li
-              key={competency.title}
-              className="rounded-2xl border border-ink-700/70 bg-ink-900/60 p-6 transition-colors hover:border-ink-600"
+              key={group.category}
+              className="rounded-2xl border border-ink-700/70 bg-ink-900/60 p-6"
             >
-              <h3 className="text-base font-semibold text-zinc-50 sm:text-lg">
-                {competency.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-400">
-                {competency.summary}
-              </p>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {competency.keywords.map((kw) => (
+              <p className="font-mono text-xs text-accent">{group.category}</p>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {group.items.map((item) => (
                   <li
-                    key={kw}
-                    className="rounded-full border border-ink-700 bg-ink-800/60 px-2.5 py-0.5 font-mono text-[11px] text-zinc-400"
+                    key={item}
+                    className="rounded-full border border-ink-700 bg-ink-800/60 px-3 py-1 font-mono text-xs text-zinc-300"
                   >
-                    {kw}
+                    {item}
                   </li>
                 ))}
               </ul>
@@ -40,47 +45,75 @@ export default function HomePage() {
         </ul>
       </Section>
 
-      <Section id="experience" title="Experience" eyebrow="02">
+      <Section id="experience" title="Experience" eyebrow="03">
         <div className="space-y-6">
           {experiences.map((experience) => (
             <ExperienceCard
-              key={`${experience.company}-${experience.role}`}
+              key={`${experience.company}-${experience.period}`}
               experience={experience}
             />
           ))}
         </div>
       </Section>
 
-      <Section id="projects" title="Selected Projects" eyebrow="03">
-        <ul className="grid gap-4 sm:grid-cols-2">
-          {projects.map((project) => (
+      <Section id="before" title="개발자 이전 경력" eyebrow="04">
+        <ul className="space-y-4">
+          {previousCareers.map((career) => (
             <li
-              key={project.name}
+              key={career.company}
               className="rounded-2xl border border-ink-700/70 bg-ink-900/60 p-6"
             >
-              <h3 className="text-base font-semibold text-zinc-50 sm:text-lg">
-                {project.name}
-              </h3>
-              <p className="mt-1 text-xs text-zinc-500">{project.role}</p>
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                <h3 className="text-base font-semibold text-zinc-50 sm:text-lg">
+                  {career.company}
+                </h3>
+                <span className="text-xs text-zinc-500 sm:text-sm">
+                  {career.period}
+                </span>
+              </div>
+              <p className="mt-1 text-sm text-zinc-400">{career.team}</p>
               <p className="mt-3 text-sm leading-relaxed text-zinc-400">
-                {project.description}
+                {career.description}
               </p>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {project.stack.map((tech) => (
-                  <li
-                    key={tech}
-                    className="rounded-full border border-ink-700 bg-ink-800/60 px-2.5 py-0.5 font-mono text-[11px] text-zinc-400"
-                  >
-                    {tech}
-                  </li>
-                ))}
-              </ul>
             </li>
           ))}
         </ul>
       </Section>
 
-      <Section id="contact" title="Contact" eyebrow="04">
+      <Section id="education" title="Education & Certifications" eyebrow="05">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="rounded-2xl border border-ink-700/70 bg-ink-900/60 p-6">
+            <p className="font-mono text-xs text-accent">Education</p>
+            <ul className="mt-3 space-y-3">
+              {education.map((edu) => (
+                <li key={`${edu.institution}-${edu.program}`}>
+                  <p className="text-sm font-medium text-zinc-100">
+                    {edu.institution}
+                  </p>
+                  <p className="text-sm text-zinc-400">{edu.program}</p>
+                  <p className="font-mono text-xs text-zinc-500">{edu.period}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-ink-700/70 bg-ink-900/60 p-6">
+            <p className="font-mono text-xs text-accent">Certifications</p>
+            <ul className="mt-3 space-y-3">
+              {certifications.map((cert) => (
+                <li key={cert.name}>
+                  <p className="text-sm font-medium text-zinc-100">
+                    {cert.name}
+                  </p>
+                  <p className="text-sm text-zinc-400">{cert.issuer}</p>
+                  <p className="font-mono text-xs text-zinc-500">{cert.date}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Section>
+
+      <Section id="contact" title="Contact" eyebrow="06">
         <div className="rounded-2xl border border-ink-700/70 bg-ink-900/60 p-6 sm:p-8">
           <p className="text-sm leading-relaxed text-zinc-300 sm:text-base">
             새로운 협업, 채용 제안, 자유로운 대화 모두 환영합니다.
@@ -91,6 +124,12 @@ export default function HomePage() {
                 <a
                   href={social.href}
                   className="inline-flex items-center gap-2 rounded-full border border-ink-600 bg-ink-800/70 px-4 py-2 text-sm text-zinc-100 transition-colors hover:border-accent hover:text-accent"
+                  target={social.href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    social.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
                 >
                   {social.label}
                 </a>
@@ -120,7 +159,8 @@ function Hero() {
   return (
     <section className="pb-20 sm:pb-28">
       <p className="font-mono text-xs text-accent">
-        {profile.role} @ {profile.company}
+        {profile.currentRole.position} @ {profile.currentRole.company} ·{" "}
+        {profile.currentRole.sinceLabel}
       </p>
       <h1 className="mt-4 text-4xl font-semibold leading-tight tracking-tight text-zinc-50 sm:text-6xl">
         {profile.name}
@@ -129,9 +169,7 @@ function Hero() {
       <p className="mt-6 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
         {profile.tagline}
       </p>
-      <p className="mt-3 font-mono text-xs text-zinc-500">
-        {profile.yearsOfExperience}+ years · Frontend & Product
-      </p>
+      <p className="mt-3 font-mono text-xs text-zinc-500">{profile.role}</p>
     </section>
   );
 }
