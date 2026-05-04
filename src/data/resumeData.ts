@@ -135,7 +135,7 @@ export const experiences: Experience[] = [
     team: "대표 2명 · 영상·대본 작업자 35명+",
     serviceName: "Jigeumfilm Admin",
     serviceDescription:
-      "영상 제작 운영 어드민(주문·배정·캘린더·네이버 커머스 동기화)을 단독 설계·구축. 프론트엔드 지식과 Claude Code(AI 페어)를 결합해 익숙하지 않은 백엔드까지 직접 확장.",
+      "영상 제작 운영 어드민을 단독 설계·구축. PO 의사결정과 Claude Code(AI 페어)를 결합해 출시.",
     stack: [
       "React 19",
       "Vite 8",
@@ -143,9 +143,7 @@ export const experiences: Experience[] = [
       "Tailwind CSS",
       "Zustand",
       "React Query",
-      "Spring Boot 3.4",
-      "Java 21",
-      "MySQL 9.4",
+      "FullCalendar",
       "Cloudflare Pages",
       "Railway",
       "Claude Code",
@@ -154,56 +152,20 @@ export const experiences: Experience[] = [
       {
         title: "Frontend PO + Claude Code 페어 프로그래밍",
         description:
-          "스펙·우선순위·검증을 PO로서 직접 정의. Claude Code를 AI 페어로 활용해 익숙하지 않은 백엔드(Spring Boot 3.4, JPA, MySQL)까지 혼자 구축. 모든 코드는 직접 리뷰 후 출시.",
+          "스펙·우선순위·검증을 PO로서 직접 정의. Claude Code를 AI 페어로 활용해 익숙하지 않은 백엔드까지 혼자 구축. 모든 코드는 직접 리뷰 후 출시.",
         metrics: ["AI pair programming", "Frontend → Full-stack solo"],
-      },
-      {
-        title: "네이버 커머스 API 2단계 동기화 설계",
-        description:
-          "last-changed-statuses 페이징 + product-orders 직접 조회를 결합한 2단계 동기화. 스케줄러(5분) / 웹훅 / 서버 시작 시 initialSync 3중 트리거에 마스킹 방어·KST 타임존 보정·MAX_API_CALLS 안전장치 동시 적용.",
-        metrics: ["1,935건 무손실 적재", "3중 동기화 트리거"],
-      },
-      {
-        title: "상품 자동 매칭 + 마스킹 prefix 매칭",
-        description:
-          "description 가중치(100/50/10) + 옵션 카운트 점수 알고리즘으로 상품 자동 매칭. 마스킹 이름(\"김*지\" ↔ \"김민지이규태\")은 prefix 매칭 + 3콤보 strict fallback으로 보완.",
-        metrics: ["미매칭 124 → 43건 (65%↓)", "매칭 정확도 97.6%"],
-      },
-      {
-        title: "RBAC 4-Tier 권한 + IDOR 차단",
-        description:
-          "4-Tier RBAC(SUPREME / STAFF / VIDEO_MANAGER / SCRIPT_MANAGER) — 백엔드 @PreAuthorize, 프론트 usePermission 훅, 라우트 가드 3중 정합. validateOwnership으로 IDOR 차단, OrderSpecification.withRoleFilter로 작업자별 본인 담당 주문 자동 필터링.",
-        metrics: ["4-Tier RBAC", "IDOR 방어"],
-      },
-      {
-        title: "Capacity 기반 SmartAssign + 화이트리스트 SSOT",
-        description:
-          "작업자 담당상품(assignedProducts) 화이트리스트 기반 Strict Match — 외 상품 노출 차단. 일·월 가동량 + 일자별 Override + 동시성 방어(409 Conflict)로 휴먼 에러 시스템 단 차단. FE↔BE SSOT로 겸직자 추가는 이름 한 줄.",
-        metrics: ["35명+ 작업자", "Strict Match", "FE↔BE SSOT"],
-      },
-      {
-        title: "일괄 업로드 + OrderHistory 자동 롤백",
-        description:
-          "스프레드시트 UPSERT를 4단계(naverOrderId → buyerId+date → name+date → fuzzy)로 매칭. 100건 chunked 업로드 + dry-run 미리보기 + '기존 주문만 업데이트' 안전 토글. 사고 시 OrderHistory 기반 bulk-rollback으로 즉시 복원.",
-        metrics: ["4단계 매칭", "OrderHistory 자동 롤백"],
       },
       {
         title: "DnD 캘린더 + 작업자 컬러 디자인 시스템",
         description:
-          "FullCalendar 월간 뷰 + 드래그앤드롭 배정을 Linear·Notion 톤(좌측 4px accent bar + 14% alpha)으로 구현. 작업자 35명+ 고유 컬러를 TINT / INVERSE / SOLID 3-state로 단일 소스 관리, '이 색 = 이 사람' 멘탈 모델 형성.",
+          "FullCalendar 월간 뷰 + 드래그앤드롭 배정을 Linear·Notion 톤(좌측 4px accent bar + 14% alpha)으로 구현. 작업자 35명+ 고유 컬러를 단일 소스로 관리, '이 색 = 이 사람' 멘탈 모델 형성.",
         metrics: ["35+ unique colors", "DnD optimistic update"],
       },
       {
-        title: "Audit Log + CANCELED 잠금",
+        title: "인프라 비용 70~80% 절감",
         description:
-          "필드별 Diff 엔진(30+ 화이트리스트) + 복합 인덱스 OrderHistory로 모든 주문 변경 이력 추적. CANCELED는 SUPREME만 롤백 가능 잠금 — 데이터 무결성 보장. Member 이름은 벌크 해석으로 N+1 차단.",
-        metrics: ["30+ tracked fields", "N+1 차단"],
-      },
-      {
-        title: "성능·인프라 비용 최적화",
-        description:
-          "React Query staleTime 30s + refetchOnMount 'always'로 폴링 제거. JPA @BatchSize(20)로 N+1 차단. useMemo 기반 productMap·memberMap O(1) 조회 구조. Railway API 호출 70~80%↓ → 인프라 비용 동반 절감.",
-        metrics: ["API 호출 70~80%↓", "N+1 차단"],
+          "운영 중 Railway 비용 부담을 발견 → 폴링 제거 + 데이터 신선도 정책 재정의. React Query 캐싱 패턴을 Claude Code와 함께 적용해 API 호출 70~80% 감소.",
+        metrics: ["API 호출 70~80%↓", "인프라 비용 절감"],
       },
     ],
   },
