@@ -83,9 +83,9 @@ export const profile: Profile = {
   },
   tagline: "비즈니스 병목을 시스템으로 풀고, 결과를 수치로 증명합니다.",
   introduction: [
-    "프론트엔드 4년차 — 코드 구현부터 PO 의사결정까지 직접 책임. 현재 지금필름 Frontend PO로 합류해 영상 제작 운영 어드민을 단독 설계·구축 중.",
-    "감보다 지표로 판단합니다. 미매칭 65%↓, API 호출 70~80%↓, MVP 2개월 출시 — 모든 의사결정을 수치로 검증.",
-    "IDOR·N+1·동시성·메모리 누수처럼 놓치기 쉬운 보안·성능 디테일도 본인 영역. 기획·디자인과 같은 언어로 합의해 운영 휴먼 에러를 시스템 단에서 차단합니다.",
+    "코드 구현부터 PO 의사결정까지 직접 책임.현재 지금필름 Frontend PO로 합류해 영상 제작 운영 어드민을 단독 설계·구축 중.",
+    "지표와 데이터로 판단합니다. 미매칭 65%↓, API 호출 70~80%↓, MVP 2개월 출시 — 모든 의사결정을 수치로 검증.",
+    "동시성·메모리 누수처럼 놓치기 쉬운 보안·성능 디테일도 본인 영역. 기획·디자인과 같은 언어로 합의해 운영 휴먼 에러를 시스템 단에서 차단합니다.",
   ],
   email: "chldydgus777@kakao.com",
   socials: [
@@ -132,7 +132,7 @@ export const experiences: Experience[] = [
     role: "Frontend Product Owner",
     period: "2026.03 ~ Present",
     duration: "약 2개월 (재직 중)",
-    team: "대표 1명 · 작업자 35명+ (영상·대본 운영진)",
+    team: "대표 2명 · 영상·대본 작업자 35명+",
     serviceName: "Jigeumfilm Admin",
     serviceDescription:
       "영상 제작 운영 어드민(주문·배정·캘린더·네이버 커머스 동기화)을 단독 설계·구축. 프론트엔드 지식과 Claude Code(AI 페어)를 결합해 익숙하지 않은 백엔드까지 직접 확장.",
@@ -277,17 +277,17 @@ export const experiences: Experience[] = [
       {
         title: "커머스 관리자 페이지 구축",
         description:
-          "입점 신청·승인, 상품 등록·수정, 주문 관리(출고/교환/반품/취소), 계정 관리까지 일반 관리자 기능 종합 구현.",
+          "입점 신청·승인, 상품 등록·수정, 주문 관리(출고/교환/반품/취소), 계정 관리까지 관리자 기능 구현.",
       },
       {
         title: "통합 관리자 기능 개발",
         description:
-          "전체·입점 상점 관리 + 정보 변경 이력 + 상점별 상품·주문·계정 관리 통합 어드민 개발.",
+          "전체·입점 상점 관리, 정보 변경 이력, 상점별 상품·주문·계정 관리 통합 어드민 개발.",
       },
       {
         title: "모바일 웹 결제·예약",
         description:
-          "포인트·쿠폰 할인 + 결제 기능 구현, 상품 상세 UI/UX 개선, 레저 예약 페이지 + 예약 시스템 연동.",
+          "포인트·쿠폰 할인, 결제 기능 구현, 상품 상세 UI/UX 개선, 레저 예약 페이지 + 예약 시스템 연동.",
       },
     ],
   },
@@ -305,11 +305,11 @@ export const experiences: Experience[] = [
       {
         title: "예약 및 일정 관리 시스템",
         description:
-          "캠핑장 등록·수정·삭제 + 예약·일정 관리 기능 개발, 멀티 디바이스 반응형 UX 제공.",
+          "캠핑장 등록·수정·삭제, 예약·일정 관리 기능 개발, 멀티 디바이스 반응형 UX 제공.",
       },
       {
         title: "다국어(i18n) 시스템",
-        description: "React-i18n 기반 다국어 콘텐츠 시스템 구축.",
+        description: "React-i18n 기반 다국어 시스템 구축.",
       },
       {
         title: "결제 모듈 연동",
@@ -336,7 +336,7 @@ export const experiences: Experience[] = [
       {
         title: "메인 인터랙션 개선",
         description:
-          "메인 페이지 푸시 카드 애니메이션 + 인터랙션 최적화. 마우스 이벤트 기반 말풍선 복사·붙여넣기 기능 구현.",
+          "메인 페이지 푸시 카드 애니메이션, 인터랙션 최적화. 마우스 이벤트 기반 말풍선 복사·붙여넣기 기능 구현.",
       },
       {
         title: "사장님 페이지",
@@ -386,5 +386,5 @@ export const certifications: Certification[] = [
 export const blogConfig: BlogConfig = {
   enabled: false,
   comingSoonMessage:
-    "기술 노트와 회고를 곧 이 자리에 정리합니다. 라우팅과 레이아웃은 미리 잡아두었습니다.",
+    "기술 회고",
 };

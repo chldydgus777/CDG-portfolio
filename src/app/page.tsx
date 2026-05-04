@@ -148,8 +148,7 @@ export default function HomePage() {
       </Section>
 
       <footer className="mt-24 border-t border-ink-700/60 pt-8 text-xs text-zinc-500">
-        © {new Date().getFullYear()} {profile.name} ({profile.nameEn}). Built
-        with Next.js · Tailwind · deployed on Vercel.
+        © {new Date().getFullYear()} {profile.name} ({profile.nameEn})
       </footer>
     </main>
   );
