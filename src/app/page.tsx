@@ -15,7 +15,7 @@ export default function HomePage() {
       <Hero />
 
       <Section id="about" title="About" eyebrow="01">
-        <div className="space-y-4 text-base leading-relaxed text-zinc-300 sm:text-lg">
+        <div className="space-y-4 break-keep text-base leading-relaxed text-zinc-300 sm:space-y-5 sm:text-lg">
           {profile.introduction.map((line) => (
             <p key={line}>{line}</p>
           ))}
@@ -157,19 +157,23 @@ export default function HomePage() {
 
 function Hero() {
   return (
-    <section className="pb-20 sm:pb-28">
-      <p className="font-mono text-xs text-accent">
+    <section className="pb-16 sm:pb-28">
+      <p className="break-keep font-mono text-[11px] leading-relaxed text-accent sm:text-xs">
         {profile.currentRole.position} @ {profile.currentRole.company} ·{" "}
         {profile.currentRole.sinceLabel}
       </p>
-      <h1 className="mt-4 text-4xl font-semibold leading-tight tracking-tight text-zinc-50 sm:text-6xl">
+      <h1 className="mt-4 break-keep text-4xl font-semibold leading-tight tracking-tight text-zinc-50 sm:text-6xl">
         {profile.name}
-        <span className="ml-3 text-zinc-500 sm:ml-4">{profile.nameEn}</span>
       </h1>
-      <p className="mt-6 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
+      <p className="mt-2 text-lg text-zinc-500 sm:mt-3 sm:text-2xl">
+        {profile.nameEn}
+      </p>
+      <p className="mt-6 max-w-2xl break-keep text-base leading-relaxed text-zinc-300 sm:text-lg">
         {profile.tagline}
       </p>
-      <p className="mt-3 font-mono text-xs text-zinc-500">{profile.role}</p>
+      <p className="mt-3 font-mono text-[11px] text-zinc-500 sm:text-xs">
+        {profile.role}
+      </p>
     </section>
   );
 }
@@ -186,10 +190,12 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-20 py-16 sm:py-20">
-      <div className="mb-10 flex items-baseline gap-4">
-        <span className="font-mono text-xs text-zinc-500">{eyebrow}</span>
-        <h2 className="text-2xl font-semibold tracking-tight text-zinc-50 sm:text-3xl">
+    <section id={id} className="scroll-mt-20 py-12 sm:py-20">
+      <div className="mb-8 flex items-baseline gap-3 sm:mb-10 sm:gap-4">
+        <span className="font-mono text-[11px] text-zinc-500 sm:text-xs">
+          {eyebrow}
+        </span>
+        <h2 className="break-keep text-2xl font-semibold tracking-tight text-zinc-50 sm:text-3xl">
           {title}
         </h2>
       </div>

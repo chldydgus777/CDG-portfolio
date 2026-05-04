@@ -7,38 +7,38 @@ type Props = {
 export function ExperienceCard({ experience }: Props) {
   return (
     <article
-      className="group relative rounded-2xl border border-ink-700/70 bg-ink-900/60 p-6 transition-colors duration-200 hover:border-ink-600 sm:p-8"
+      className="group relative rounded-2xl border border-ink-700/70 bg-ink-900/60 p-5 transition-colors duration-200 hover:border-ink-600 sm:p-8"
       aria-label={`${experience.company} ${experience.role}`}
     >
-      <header className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
-        <div>
-          <h3 className="text-lg font-semibold text-zinc-50 sm:text-xl">
+      <header className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+        <div className="min-w-0">
+          <h3 className="break-keep text-lg font-semibold text-zinc-50 sm:text-xl">
             {experience.company}
           </h3>
           <p className="mt-1 text-sm text-zinc-400 sm:text-base">
             {experience.role}
           </p>
         </div>
-        <div className="flex flex-col text-xs text-zinc-500 sm:items-end sm:text-sm">
+        <div className="flex flex-col font-mono text-[11px] text-zinc-500 sm:items-end sm:text-xs">
           <span>{experience.period}</span>
           {experience.duration ? <span>{experience.duration}</span> : null}
         </div>
       </header>
 
       {experience.serviceName || experience.serviceDescription || experience.team ? (
-        <div className="mt-4 rounded-xl border border-ink-700/60 bg-ink-800/40 p-4">
+        <div className="mt-4 rounded-xl border border-ink-700/60 bg-ink-800/40 p-4 sm:p-5">
           {experience.serviceName ? (
             <p className="font-mono text-xs text-accent">
               {experience.serviceName}
             </p>
           ) : null}
           {experience.serviceDescription ? (
-            <p className="mt-2 text-sm leading-relaxed text-zinc-300">
+            <p className="mt-2 break-keep text-sm leading-relaxed text-zinc-300">
               {experience.serviceDescription}
             </p>
           ) : null}
           {experience.team ? (
-            <p className="mt-2 font-mono text-[11px] text-zinc-500">
+            <p className="mt-2 break-keep font-mono text-[11px] text-zinc-500 sm:text-xs">
               Team · {experience.team}
             </p>
           ) : null}
@@ -51,10 +51,10 @@ export function ExperienceCard({ experience }: Props) {
             key={highlight.title}
             className="rounded-xl border border-ink-700/60 bg-ink-800/50 p-4 sm:p-5"
           >
-            <h4 className="text-sm font-medium text-zinc-100 sm:text-base">
+            <h4 className="break-keep text-sm font-semibold text-zinc-50 sm:text-base">
               {highlight.title}
             </h4>
-            <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+            <p className="mt-2 break-keep text-sm leading-relaxed text-zinc-300 sm:text-[15px]">
               {highlight.description}
             </p>
             {highlight.metrics && highlight.metrics.length > 0 ? (
@@ -62,7 +62,7 @@ export function ExperienceCard({ experience }: Props) {
                 {highlight.metrics.map((metric) => (
                   <li
                     key={metric}
-                    className="rounded-md border border-accent/30 bg-accent/10 px-2 py-0.5 font-mono text-[11px] text-accent"
+                    className="rounded-md border border-accent/30 bg-accent/10 px-2.5 py-1 font-mono text-xs text-accent"
                   >
                     {metric}
                   </li>
