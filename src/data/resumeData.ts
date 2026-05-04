@@ -83,9 +83,9 @@ export const profile: Profile = {
   },
   tagline: "비즈니스 병목을 시스템으로 풀고, 결과를 수치로 증명합니다.",
   introduction: [
-    "코드 구현부터 PO 의사결정까지 직접 책임.현재 지금필름 Frontend PO로 합류해 영상 제작 운영 어드민을 단독 설계·구축 중.",
-    "지표와 데이터로 판단합니다. 미매칭 65%↓, API 호출 70~80%↓, MVP 2개월 출시 — 모든 의사결정을 수치로 검증.",
-    "동시성·메모리 누수처럼 놓치기 쉬운 보안·성능 디테일도 본인 영역. 기획·디자인과 같은 언어로 합의해 운영 휴먼 에러를 시스템 단에서 차단합니다.",
+    "코드 구현부터 PO 의사결정까지 직접 책임. 현재 지금필름 Frontend · PO로 합류해 영상 제작 운영 어드민을 단독 설계·구축 중.",
+    "지표로 판단합니다. 미매칭 65%↓, API 호출 70~80%↓, MVP 2개월 출시, 모든 의사결정을 수치로 검증.",
+    "동시성·메모리 누수처럼 놓치기 쉬운 보안·성능 디테일도 누락 없이 작업, 휴먼 에러를 시스템 단에서 차단합니다.",
   ],
   email: "chldydgus777@kakao.com",
   socials: [
@@ -152,13 +152,13 @@ export const experiences: Experience[] = [
       {
         title: "Frontend PO + Claude Code 페어 프로그래밍",
         description:
-          "스펙·우선순위·검증을 PO로서 직접 정의. Claude Code를 AI 페어로 활용해 익숙하지 않은 백엔드까지 혼자 구축. 모든 코드는 직접 리뷰 후 출시.",
+          "스펙·우선순위·검증을 PO로서 직접 정의. Claude Code를 AI 페어로 활용해 익숙하지 않은 백엔드까지 구축. 모든 코드는 직접 리뷰 후 출시.",
         metrics: ["AI pair programming", "Frontend → Full-stack solo"],
       },
       {
         title: "DnD 캘린더 + 작업자 컬러 디자인 시스템",
         description:
-          "FullCalendar 월간 뷰 + 드래그앤드롭 배정을 Linear·Notion 톤(좌측 4px accent bar + 14% alpha)으로 구현. 작업자 35명+ 고유 컬러를 단일 소스로 관리, '이 색 = 이 사람' 멘탈 모델 형성.",
+          "FullCalendar 월간 뷰 + DnD 배정을 Linear·Notion 톤으로 구현. 작업자 35명+ 고유 컬러를 단일 소스로 관리, 컬러 멘탈 모델 형성.",
         metrics: ["35+ unique colors", "DnD optimistic update"],
       },
       {
