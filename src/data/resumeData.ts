@@ -74,7 +74,7 @@ export type BlogConfig = {
 export const profile: Profile = {
   name: "최용현",
   nameEn: "Choi Yong-hyun",
-  role: "Frontend Developer · Product Owner",
+  role: "Front-end Developer · Product Owner",
   currentRole: {
     company: "Jigeumfilm (지금필름)",
     position: "Product Owner",
@@ -83,7 +83,7 @@ export const profile: Profile = {
   },
   tagline: "비즈니스 병목을 시스템으로 풀고, 결과를 수치로 증명합니다.",
   introduction: [
-    "코드 구현부터 PO 의사결정까지 직접 책임. 현재 지금필름 Frontend · PO로 합류해 영상 제작 운영 어드민을 단독 설계·구축 중.",
+    "코드 구현부터 PO 의사결정까지 직접 책임. 현재 지금필름 Front-end · PO로 합류해 영상 제작 운영 어드민을 단독 설계·구축 중.",
     "지표로 판단합니다. 미매칭 65%↓, API 호출 70~80%↓, MVP 2개월 출시, 모든 의사결정을 수치로 검증.",
     "동시성·메모리 누수처럼 놓치기 쉬운 보안·성능 디테일도 누락 없이 작업, 휴먼 에러를 시스템 단에서 차단합니다.",
   ],
@@ -129,7 +129,7 @@ export const skillGroups: SkillGroup[] = [
 export const experiences: Experience[] = [
   {
     company: "Jigeumfilm (지금필름)",
-    role: "Frontend Product Owner",
+    role: "Front-end Product Owner",
     period: "2026.03 ~ Present",
     duration: "약 2개월 (재직 중)",
     team: "대표 2명 · 영상·대본 작업자 35명+",
@@ -150,10 +150,10 @@ export const experiences: Experience[] = [
     ],
     highlights: [
       {
-        title: "Frontend PO + Claude Code 페어 프로그래밍",
+        title: "Front-end PO + Claude Code 페어 프로그래밍",
         description:
           "스펙·우선순위·검증을 PO로서 직접 정의. Claude Code를 AI 페어로 활용해 익숙하지 않은 백엔드까지 구축. 모든 코드는 직접 리뷰 후 출시.",
-        metrics: ["AI pair programming", "Frontend → Full-stack solo"],
+        metrics: ["AI pair programming", "Front-end → Full-stack solo"],
       },
       {
         title: "DnD 캘린더 + 작업자 컬러 디자인 시스템",
@@ -171,7 +171,7 @@ export const experiences: Experience[] = [
   },
   {
     company: "(주) 커넥션스튜디오",
-    role: "Frontend Developer",
+    role: "Front-end Developer",
     period: "2024.09 ~ 2025.07",
     duration: "약 11개월",
     team: "백엔드 2명 · 디자이너 1명",
@@ -227,7 +227,7 @@ export const experiences: Experience[] = [
   },
   {
     company: "(주) 러브에그",
-    role: "Frontend Developer",
+    role: "Front-end Developer",
     period: "2023.09 ~ 2024.02",
     duration: "5개월",
     team: "백엔드 1명 · 디자이너 1명 · iOS 3명 · AOS 1명",
@@ -255,7 +255,7 @@ export const experiences: Experience[] = [
   },
   {
     company: "(주) 슬로그인",
-    role: "Frontend Developer",
+    role: "Front-end Developer",
     period: "2022.06 ~ 2023.09",
     duration: "1년 3개월",
     team: "백엔드 1명",
@@ -281,7 +281,7 @@ export const experiences: Experience[] = [
   },
   {
     company: "(주) 니더",
-    role: "Frontend Developer",
+    role: "Front-end Developer",
     period: "2021.07 ~ 2021.12",
     duration: "5개월",
     stack: ["Vue", "Nuxt", "Scss"],
