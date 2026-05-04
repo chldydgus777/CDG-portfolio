@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-950 text-zinc-100 antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  @apply bg-accent/30 text-zinc-50;
+}
+
+.section-divider {
+  @apply h-px w-full bg-gradient-to-r from-transparent via-ink-600 to-transparent;
+}
