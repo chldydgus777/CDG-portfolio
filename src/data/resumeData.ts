@@ -129,13 +129,13 @@ export const skillGroups: SkillGroup[] = [
 export const experiences: Experience[] = [
   {
     company: "Jigeumfilm (지금필름)",
-    role: "Product Owner & Full-Stack Developer",
+    role: "Frontend Product Owner",
     period: "2026.03 ~ Present",
     duration: "약 2개월 (재직 중)",
     team: "대표 1명 · 작업자 35명+ (영상·대본 운영진)",
     serviceName: "Jigeumfilm Admin",
     serviceDescription:
-      "영상 제작 주문 수집부터 작업자 배정·캘린더·네이버 커머스 동기화까지 운영 전 과정을 다루는 어드민 시스템을 단독으로 설계·구축하고, PO 역할로 92개 스프린트(#5~#92)를 운영하고 있습니다.",
+      "Frontend PO 포지션으로 합류해, 본인의 프론트엔드 개발 경험과 Claude Code(AI 페어 프로그래머)를 결합해 익숙하지 않은 백엔드 영역까지 어드민 시스템을 단독으로 설계·구축하고, 92개 스프린트(#5~#92)를 운영하고 있습니다.",
     stack: [
       "React 19",
       "Vite 8",
@@ -148,13 +148,14 @@ export const experiences: Experience[] = [
       "MySQL 9.4",
       "Cloudflare Pages",
       "Railway",
+      "Claude Code",
     ],
     highlights: [
       {
-        title: "PO 역할 — 92개 스프린트 운영",
+        title: "Frontend PO + Claude Code 페어 프로그래밍",
         description:
-          "기획·설계·구현·운영 의사결정을 동시에 책임지며, Sprint #5부터 #92까지 매주 단위로 백엔드·프론트엔드·인프라 변경을 추적하고 운영진 피드백을 즉시 반영했습니다.",
-        metrics: ["#5 ~ #92 sprints", "weekly cadence"],
+          "Frontend PO로서 스펙·설계·우선순위·검증을 직접 책임지고, Claude Code를 AI 페어 프로그래머로 적극 활용해 익숙하지 않은 백엔드(Spring Boot 3.4 / JPA / MySQL) 영역까지 단독으로 구축했습니다. 구현은 AI에게 위임하더라도 모든 의사결정과 코드 리뷰는 본인이 책임지는 워크플로우로, Sprint #5부터 #92까지 빠른 사이클로 출시했습니다.",
+        metrics: ["#5 ~ #92 sprints", "AI pair programming", "Frontend → Full-stack solo"],
       },
       {
         title: "네이버 커머스 API 2단계 동기화 시스템",
