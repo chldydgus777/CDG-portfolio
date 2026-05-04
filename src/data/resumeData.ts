@@ -129,17 +129,80 @@ export const skillGroups: SkillGroup[] = [
 export const experiences: Experience[] = [
   {
     company: "Jigeumfilm (지금필름)",
-    role: "Product Owner",
+    role: "Product Owner & Full-Stack Developer",
     period: "2026.03 ~ Present",
-    serviceName: "Product Ownership",
+    duration: "약 2개월 (재직 중)",
+    team: "대표 1명 · 작업자 35명+ (영상·대본 운영진)",
+    serviceName: "Jigeumfilm Admin",
     serviceDescription:
-      "프론트엔드 개발 경험을 바탕으로 제품 방향성과 기획을 책임지는 PO 역할을 수행하고 있습니다.",
-    stack: ["Product Strategy", "Spec Writing", "Cross-functional"],
+      "영상 제작 주문 수집부터 작업자 배정·캘린더·네이버 커머스 동기화까지 운영 전 과정을 다루는 어드민 시스템을 단독으로 설계·구축하고, PO 역할로 92개 스프린트(#5~#92)를 운영하고 있습니다.",
+    stack: [
+      "React 19",
+      "Vite 8",
+      "TypeScript",
+      "Tailwind CSS",
+      "Zustand",
+      "React Query",
+      "Spring Boot 3.4",
+      "Java 21",
+      "MySQL 9.4",
+      "Cloudflare Pages",
+      "Railway",
+    ],
     highlights: [
       {
-        title: "개발–기획 사이의 통역자",
+        title: "PO 역할 — 92개 스프린트 운영",
         description:
-          "프론트엔드 개발자로서의 구현 감각을 활용해 기획 의도를 컴포넌트·상태·API 단위로 번역하고, 우선순위를 빠르게 합의합니다.",
+          "기획·설계·구현·운영 의사결정을 동시에 책임지며, Sprint #5부터 #92까지 매주 단위로 백엔드·프론트엔드·인프라 변경을 추적하고 운영진 피드백을 즉시 반영했습니다.",
+        metrics: ["#5 ~ #92 sprints", "weekly cadence"],
+      },
+      {
+        title: "네이버 커머스 API 2단계 동기화 시스템",
+        description:
+          "`last-changed-statuses` 페이징과 `product-orders` 직접 조회를 결합한 2단계 동기화를 구축했습니다. 5분 주기 스케줄러 + 웹훅 + 서버 시작 시 `initialSync`로 누락을 차단하고, 마스킹 방어·KST 타임존 보정·`MAX_API_CALLS` 안전장치를 함께 도입했습니다.",
+        metrics: ["1,935건 안정 적재", "5분 주기 폴링"],
+      },
+      {
+        title: "상품 자동 매칭 + 마스킹 prefix 매칭",
+        description:
+          "description 가중치(100/50/10)와 옵션 카운트 기반 점수 알고리즘으로 상품을 자동 매칭하고, 마스킹된 이름(\"김*지\" ↔ \"김민지이규태\")에는 prefix 매칭과 3콤보 strict fallback을 적용해 정확도를 끌어올렸습니다.",
+        metrics: ["미매칭 124건 → 43건 (65%↓)", "97.6% 매칭 정확도"],
+      },
+      {
+        title: "RBAC 4-Tier 권한 + IDOR 차단",
+        description:
+          "SUPREME / STAFF / VIDEO_MANAGER / SCRIPT_MANAGER 4단계 권한을 백엔드 `@PreAuthorize`, 프론트 `usePermission` 훅, 라우트 가드 3중으로 정합화했습니다. `validateOwnership()`으로 IDOR 취약점을 차단하고, 작업자별로 본인 담당 주문만 자동 필터링되도록 `OrderSpecification.withRoleFilter`를 설계했습니다.",
+        metrics: ["4-Tier RBAC", "IDOR 방어"],
+      },
+      {
+        title: "Capacity 기반 SmartAssign + 화이트리스트 SSOT",
+        description:
+          "작업자 담당상품(`assignedProducts`)을 화이트리스트로 두어 외 상품은 절대 노출되지 않도록 Strict Match를 적용했습니다. 일·월 단위 가동량 + 일자별 Override + 동시성 방어(`409 Conflict`)로 운영진의 휴먼 에러를 시스템 단에서 차단했고, FE/BE 양쪽에 SSOT를 두어 겸직자 추가가 \"이름 한 줄\"로 끝나도록 설계했습니다.",
+        metrics: ["35+명 작업자", "Strict Match", "FE↔BE SSOT"],
+      },
+      {
+        title: "일괄 업로드 + 자동 롤백 시스템",
+        description:
+          "스프레드시트 UPSERT를 4단계 매칭(`naverOrderId` → `buyerId+date` → `name+date` → fuzzy)으로 처리하고, 100건 단위 chunked 업로드와 dry-run 미리보기, \"기존 주문만 업데이트\" 안전 토글을 제공했습니다. 사고 시 `OrderHistory` 기반 자동 복원(`bulk-rollback`)으로 운영 안전망을 구축했습니다.",
+        metrics: ["4단계 매칭", "OrderHistory 기반 롤백"],
+      },
+      {
+        title: "DnD 캘린더 + 작업자 컬러 디자인 시스템",
+        description:
+          "FullCalendar 월간 뷰 + 드래그앤드롭 배정을 Linear/Notion 톤(좌측 accent bar + 14% alpha 배경)으로 구현했습니다. 35+명 작업자별 고유 컬러를 TINT / INVERSE / SOLID 3-state로 정의해 단일 진실 소스로 관리하고, 운영진이 캘린더만 봐도 \"이 색 = 이 사람\" 멘탈 모델이 즉시 형성되도록 설계했습니다.",
+        metrics: ["35+ unique colors", "DnD optimistic update"],
+      },
+      {
+        title: "Audit Log (OrderHistory) + CANCELED 잠금",
+        description:
+          "필드별 Diff 엔진(30개 화이트리스트)과 복합 인덱스를 갖춘 `OrderHistory`를 구현해 모든 주문 변경 이력을 추적합니다. CANCELED 상태는 SUPREME만 롤백 가능하도록 잠금 처리해 데이터 무결성을 보장하고, Member 이름은 벌크로 해석해 N+1을 차단했습니다.",
+        metrics: ["30+ tracked fields", "N+1 차단"],
+      },
+      {
+        title: "성능·인프라 비용 최적화",
+        description:
+          "React Query `staleTime` 30초 + `refetchOnMount: 'always'` 패턴으로 폴링을 제거하고, JPA `@BatchSize(20)`로 N+1을 차단했으며, `useMemo` 기반 productMap·memberMap으로 O(1) 조회 구조를 만들었습니다. 그 결과 Railway API 호출량을 약 70~80% 감소시켜 인프라 비용 부담을 크게 낮췄습니다.",
+        metrics: ["API 호출 70~80%↓", "@BatchSize(20)"],
       },
     ],
   },
