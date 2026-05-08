@@ -584,33 +584,6 @@ export const youngmi = {
         },
       ],
     },
-    {
-      company: "(주) 니더",
-      role: "운영자 페이지 개발 (Front-end)",
-      period: "2021.07 ~ 2021.12",
-      duration: "5개월",
-      stack: [
-        "운영자 페이지",
-        "본인인증",
-        "프레임워크 마이그레이션",
-      ],
-      highlights: [
-        {
-          title: "사장님(운영자) 페이지 구축",
-          description:
-            "사업주가 알바 구인 공고를 등록·수정·삭제하는 운영자 페이지 구현.",
-        },
-        {
-          title: "본인인증 연동",
-          description: "휴대폰 본인인증 및 카카오 인증 연동.",
-        },
-        {
-          title: "프레임워크 마이그레이션",
-          description:
-            "기존 코드 자산을 Nuxt 기반 구조로 전환. 유지보수성·확장성 개선.",
-        },
-      ],
-    },
   ] satisfies Experience[],
 
   previousCareers: [
