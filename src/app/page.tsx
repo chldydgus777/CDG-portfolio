@@ -1,13 +1,15 @@
 import Link from "next/link";
 import { ExperienceCard } from "@/components/ExperienceCard";
-import {
-  certifications,
-  education,
-  experiences,
-  previousCareers,
+import { youngmi } from "@/data/resumeData";
+
+const {
   profile,
   skillGroups,
-} from "@/data/resumeData";
+  experiences,
+  previousCareers,
+  education,
+  certifications,
+} = youngmi;
 
 export default function HomePage() {
   return (
