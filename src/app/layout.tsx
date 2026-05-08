@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { profile } from "@/data/resumeData";
+import { youngmi } from "@/data/resumeData";
+
+const { profile } = youngmi;
 
 export const metadata: Metadata = {
   title: `${profile.name} — ${profile.role}`,
