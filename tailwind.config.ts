@@ -23,6 +23,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: [
+          "Pretendard Variable",
           "Pretendard",
           "-apple-system",
           "BlinkMacSystemFont",
@@ -32,7 +33,14 @@ const config: Config = {
           "Helvetica Neue",
           "sans-serif",
         ],
-        mono: ["JetBrains Mono", "Menlo", "Monaco", "monospace"],
+        mono: [
+          "JetBrains Mono",
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Consolas",
+          "monospace",
+        ],
       },
       maxWidth: {
         content: "960px",
