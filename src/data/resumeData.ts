@@ -342,6 +342,23 @@ export const certifications: Certification[] = [
 ];
 
 /* -------------------------------------------------------------------------- */
+/*                            Dev page — hero stats                           */
+/* -------------------------------------------------------------------------- */
+
+export type HeroStat = {
+  value: string;
+  label: string;
+};
+
+/** /dev 히어로 스탯 스트립. 본문 experiences의 metrics에서 발췌한 대표 수치. */
+export const devHeroStats: HeroStat[] = [
+  { value: "70~80%↓", label: "API 호출 · 인프라 비용 절감" },
+  { value: "37×", label: "이미지 업로드 단축 (4.19s → 111ms)" },
+  { value: "5,000+", label: "리스트 가상화 · 60fps 스크롤" },
+  { value: "2개월", label: "MVP 설계부터 시장 출시까지" },
+];
+
+/* -------------------------------------------------------------------------- */
 /*                                    Blog                                    */
 /* -------------------------------------------------------------------------- */
 
@@ -383,6 +400,13 @@ export const youngmi = {
       { label: "GitHub", href: "https://github.com/chldydgus777" },
     ],
   } satisfies Profile,
+
+  heroStats: [
+    { value: "35+", label: "작업자 배정·일정 통합 관리" },
+    { value: "5,000+", label: "대량 데이터 처리 최적화" },
+    { value: "2개월", label: "운영 시스템 기획 → 출시" },
+    { value: "2025.01", label: "결제 연동 — 서비스 첫 매출" },
+  ] satisfies HeroStat[],
 
   skillGroups: [
     {
@@ -616,4 +640,213 @@ export const youngmi = {
     enabled: false,
     comingSoonMessage: "운영 자동화 회고",
   } satisfies BlogConfig,
+};
+
+/* -------------------------------------------------------------------------- */
+/*                        PO persona — Product Owner SSOT                     */
+/* -------------------------------------------------------------------------- */
+/**
+ * Product Owner 직무 지원용 SSOT.
+ * 동일한 실 경력을 '제품 의사결정·수익화·출시' 언어로 재서술한 페르소나.
+ * 직함은 사실 그대로 유지하고, 성과의 프레임만 제품 관점으로 바꾼다.
+ * /po 페이지는 이 po 객체만 import 한다.
+ */
+
+export const po = {
+  profile: {
+    name: "최용현",
+    nameEn: "Choi Yong-hyun",
+    role: "Product Owner · Front-end",
+    currentRole: {
+      company: "Jigeumfilm (지금필름)",
+      position: "Product Owner",
+      sinceISO: "2026-03-16",
+      sinceLabel: "2026.03.16 ~",
+    },
+    tagline: "개발을 아는 PO — 가설을 코드로 직접 검증하고, 출시로 증명합니다.",
+    introduction: [
+      "지금필름 PO로 영상 제작 운영 어드민의 스펙 정의부터 구축·출시까지 단독 수행. 기획서가 아니라 동작하는 제품으로 말합니다.",
+      "우선순위는 데이터로 정합니다. 인프라 비용 70~80% 절감, MVP 2개월 출시, 서비스 첫 매출 — 의사결정을 수치로 검증해 왔습니다.",
+      "프론트엔드 개발자 출신이라 엔지니어와 같은 언어로 말하고, 실현 가능한 스펙을 씁니다.",
+    ],
+    email: "chldydgus777@kakao.com",
+    socials: [
+      { label: "Email", href: "mailto:chldydgus777@kakao.com" },
+      { label: "GitHub", href: "https://github.com/chldydgus777" },
+    ],
+  } satisfies Profile,
+
+  heroStats: [
+    { value: "2개월", label: "MVP 기획부터 시장 출시까지" },
+    { value: "70~80%↓", label: "데이터 정책 재정의로 인프라 비용 절감" },
+    { value: "35+", label: "작업자 운영 체계 단독 구축" },
+    { value: "2025.01", label: "결제·구독 모델 구현 — 첫 매출" },
+  ] satisfies HeroStat[],
+
+  skillGroups: [
+    {
+      category: "Product",
+      items: [
+        "제품 스펙 정의",
+        "우선순위 결정",
+        "MVP 스코핑",
+        "백로그 관리",
+        "출시 후 검증",
+      ],
+    },
+    {
+      category: "Data & Metrics",
+      items: ["지표 정의·추적", "비용 구조 분석", "데이터 기반 의사결정"],
+    },
+    {
+      category: "Delivery",
+      items: [
+        "AI 페어 프로그래밍 (Claude Code)",
+        "프론트엔드 직접 구현 (React · TypeScript)",
+        "풀스택 MVP 구축",
+      ],
+    },
+    {
+      category: "Domain",
+      items: ["운영 어드민", "결제·구독", "예약 시스템", "커머스"],
+    },
+    {
+      category: "Collaboration",
+      items: ["Notion", "Figma", "GitHub", "Slack"],
+    },
+  ] satisfies SkillGroup[],
+
+  experiences: [
+    {
+      company: "Jigeumfilm (지금필름)",
+      role: "Product Owner",
+      period: "2026.03 ~ 현재",
+      duration: "약 2개월 (재직 중)",
+      team: "대표 2명 · 영상·대본 작업자 35명+",
+      serviceName: "영상 제작 운영 어드민",
+      serviceDescription:
+        "수기·스프레드시트로 돌아가던 제작 운영을 단일 어드민 제품으로 전환 — 기획부터 출시까지 1인 수행.",
+      stack: ["스펙 정의", "우선순위 결정", "Claude Code 페어", "React 19", "운영 지표"],
+      highlights: [
+        {
+          title: "스펙부터 출시까지 — 1인 제품 사이클",
+          description:
+            "대표 2명의 요구사항을 스펙·우선순위로 정리하고, Claude Code를 AI 페어로 활용해 직접 구현·출시. 기획↔개발 사이의 전달 손실이 0인 제품 사이클을 운영합니다.",
+          metrics: ["기획 → 출시 단독 수행", "운영 투입까지 2개월"],
+        },
+        {
+          title: "비용 구조를 바꾼 의사결정",
+          description:
+            "운영 중 인프라 비용 부담을 발견 → 데이터 신선도 정책을 재정의하고 폴링을 제거. 기능 추가가 아니라 정책 변경으로 문제를 풀었습니다.",
+          metrics: ["API 호출 70~80%↓", "인프라 비용 절감"],
+        },
+        {
+          title: "35+ 작업자 운영 체계",
+          description:
+            "DnD 캘린더 배정과 작업자 고유 컬러 시스템 설계 — 누가 무엇을 하는지 한 화면에서 읽히는 운영 멘탈 모델을 만들었습니다.",
+          metrics: ["누락·중복 배정 차단"],
+        },
+      ],
+    },
+    {
+      company: "(주) 커넥션스튜디오",
+      role: "Front-end Developer",
+      period: "2024.09 ~ 2025.07",
+      duration: "약 11개월",
+      team: "백엔드 2명 · 디자이너 1명",
+      serviceName: "캐스팅보트",
+      serviceDescription:
+        "아티스트 ↔ 캐스팅 담당자 매칭 플랫폼 — 개발자로 합류해 수익화·프로세스 개선을 주도.",
+      stack: ["결제·구독", "React", "React Query", "Zustand"],
+      highlights: [
+        {
+          title: "비즈니스 모델 구현 — 서비스 첫 수익화",
+          description:
+            "웰컴페이 결제 연동 위에 유료 멤버십 구독 모델을 구현, 2025년 1월 서비스 첫 매출을 만들었습니다.",
+          metrics: ["2025.01 첫 매출"],
+        },
+        {
+          title: "MVP 2개월 출시",
+          description:
+            "생산성과 유지보수가 양립하는 코드베이스 설계로 2개월 내 시장 출시 — 빠른 검증 사이클의 기반을 만들었습니다.",
+          metrics: ["MVP in 2 months"],
+        },
+        {
+          title: "오프라인 프로세스의 제품화",
+          description:
+            "오프라인으로 전달되던 프로필 업무를 온라인 워크플로우로 전환하고, 캐스팅 전 과정을 탭 기반 단일 화면으로 통합 — 매니저 운영 공수를 줄였습니다.",
+        },
+      ],
+    },
+    {
+      company: "(주) 러브에그",
+      role: "Front-end Developer",
+      period: "2023.09 ~ 2024.02",
+      duration: "5개월",
+      team: "백엔드 1명 · 디자이너 1명 · iOS 3명 · AOS 1명",
+      serviceName: "레저 예약 / 커머스 플랫폼",
+      serviceDescription:
+        "레저 예약 + 커머스 통합 서비스의 초기 설계·구현 — 커머스 운영 도메인 경험.",
+      stack: ["커머스 어드민", "결제·예약", "Next.js"],
+      highlights: [
+        {
+          title: "커머스 운영 플로우 전 과정 구현",
+          description:
+            "입점 승인 → 상품 등록 → 주문(출고·교환·반품·취소) → 정산 계정까지 — 커머스 운영의 엔드투엔드 플로우를 어드민으로 구현하며 도메인을 체득했습니다.",
+        },
+        {
+          title: "결제·예약 시스템 연동",
+          description:
+            "포인트·쿠폰 할인 정책 반영, 모바일 웹 결제와 레저 예약 시스템 연동.",
+        },
+      ],
+    },
+    {
+      company: "(주) 슬로그인",
+      role: "Front-end Developer",
+      period: "2022.06 ~ 2023.09",
+      duration: "1년 3개월",
+      team: "백엔드 1명",
+      serviceName: "프라이빗 캠핑장 예약",
+      serviceDescription: "예약 서비스의 초기 설계·구현 — 0→1 단계 제품 경험.",
+      stack: ["예약·일정", "결제(포트원)", "i18n"],
+      highlights: [
+        {
+          title: "예약 도메인 0→1 구축",
+          description:
+            "캠핑장 등록부터 예약·일정 관리, 나이스페이먼츠(포트원) 결제 연동까지 — 예약·결제 사이클 전체를 초기부터 설계했습니다.",
+        },
+        {
+          title: "다국어(i18n) 시스템 구축",
+          description: "react-i18n 기반 다국어 대응으로 잠재 사용자 폭 확장.",
+        },
+      ],
+    },
+  ] satisfies Experience[],
+
+  previousCareers: [
+    {
+      company: "이노엘이디솔루션즈",
+      team: "LED 조명개발팀 · SCM",
+      period: "2019.07 ~ 2020.11 (1년 4개월)",
+      description:
+        "원자재 수급·재고·출고 스케줄링 등 제조업 SCM 실무 담당. 공급망과 운영 현장의 흐름을 직접 다룬 경험이 운영 제품을 설계하는 감각의 바탕이 됐습니다.",
+    },
+  ] satisfies PreviousCareer[],
+
+  education: [
+    {
+      institution: "가톨릭대학교",
+      program: "IT 파이낸스",
+      period: "2024.03 ~",
+    },
+  ] satisfies Education[],
+
+  certifications: [
+    {
+      name: "전기기능사",
+      issuer: "한국산업인력공단",
+      date: "2015.06",
+    },
+  ] satisfies Certification[],
 };
