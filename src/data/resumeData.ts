@@ -66,6 +66,39 @@ export type Certification = {
 /*                                  Profile                                   */
 /* -------------------------------------------------------------------------- */
 
+/* -------------------------------------------------------------------------- */
+/*                              Tenure (재직 기간)                              */
+/* -------------------------------------------------------------------------- */
+
+/** 지금필름 입사일. sinceISO와 재직 기간 계산이 이 값 하나를 공유한다. */
+export const JIGEUMFILM_SINCE = "2026-03-16";
+
+/**
+ * 재직 중인 경력의 기간 라벨을 시작일에서 계산한다.
+ * 하드코딩하면 작성 시점 기준으로 굳어 시간이 지날수록 틀린 값이 되므로
+ * (실제로 "약 2개월"이 6개월 가까이 방치된 적이 있다) 매 렌더마다 계산한다.
+ * 정적 렌더 이후에도 갱신되도록 페이지에 `export const revalidate`가 필요하다.
+ */
+export function tenure(sinceISO: string, now: Date = new Date()): string {
+  const since = new Date(sinceISO);
+  let months =
+    (now.getFullYear() - since.getFullYear()) * 12 +
+    (now.getMonth() - since.getMonth());
+  if (now.getDate() < since.getDate()) months -= 1;
+  months = Math.max(months, 0);
+
+  const years = Math.floor(months / 12);
+  const rest = months % 12;
+  const label =
+    years > 0
+      ? rest > 0
+        ? `${years}년 ${rest}개월`
+        : `${years}년`
+      : `${months}개월`;
+
+  return `약 ${label} (재직 중)`;
+}
+
 export const profile: Profile = {
   name: "최용현",
   nameEn: "Choi Yong-hyun",
@@ -73,7 +106,7 @@ export const profile: Profile = {
   currentRole: {
     company: "Jigeumfilm (지금필름)",
     position: "Product Owner",
-    sinceISO: "2026-03-16",
+    sinceISO: JIGEUMFILM_SINCE,
     sinceLabel: "2026.03.16 ~",
   },
   tagline: "비즈니스 병목을 시스템으로 풀고, 결과를 수치로 증명합니다.",
@@ -126,7 +159,7 @@ export const experiences: Experience[] = [
     company: "Jigeumfilm (지금필름)",
     role: "Front-end Product Owner",
     period: "2026.03 ~ Present",
-    duration: "약 2개월 (재직 중)",
+    duration: tenure(JIGEUMFILM_SINCE),
     team: "대표 2명 · 영상·대본 작업자 35명+",
     serviceName: "Jigeumfilm Admin",
     serviceDescription:
@@ -371,7 +404,7 @@ export const po = {
     currentRole: {
       company: "Jigeumfilm (지금필름)",
       position: "Product Owner",
-      sinceISO: "2026-03-16",
+      sinceISO: JIGEUMFILM_SINCE,
       sinceLabel: "2026.03.16 ~",
     },
     tagline: "개발을 아는 PO — 가설을 코드로 직접 검증하고, 출시로 증명합니다.",
@@ -432,7 +465,7 @@ export const po = {
       company: "Jigeumfilm (지금필름)",
       role: "Product Owner",
       period: "2026.03 ~ 현재",
-      duration: "약 2개월 (재직 중)",
+      duration: tenure(JIGEUMFILM_SINCE),
       team: "대표 2명 · 영상·대본 작업자 35명+",
       serviceName: "영상 제작 운영 어드민",
       serviceDescription:

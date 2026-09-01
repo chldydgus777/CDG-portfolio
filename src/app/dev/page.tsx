@@ -21,6 +21,12 @@ import {
   type PreviousCareer,
 } from "@/data/resumeData";
 
+/**
+ * 재직 기간(`tenure`)이 빌드 시점에 굳지 않도록 하루 단위로 재생성한다.
+ * 이게 없으면 정적 프리렌더 값이 그대로 남아 다시 낡은 개월 수를 노출한다.
+ */
+export const revalidate = 86400;
+
 export const metadata: Metadata = {
   title: `${profile.name} — ${profile.role}`,
   description: profile.tagline,
