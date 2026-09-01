@@ -111,7 +111,7 @@ export const profile: Profile = {
   },
   tagline: "비즈니스 병목을 시스템으로 풀고, 결과를 수치로 증명합니다.",
   introduction: [
-    "코드 구현부터 PO 의사결정까지 직접 책임. 현재 지금필름 Front-end · PO로 합류해 영상 제작 운영 어드민을 단독 설계·구축 중.",
+    "코드 구현부터 PO 의사결정까지 직접 책임. 지금필름에서 제작 운영 어드민·자사 판매몰·신규 아카이브 서비스 3개를 단독으로 설계·구축·운영 중이며, 프론트엔드에서 시작해 백엔드와 인프라까지 범위를 넓혔습니다.",
     "지표로 판단합니다. 미매칭 65%↓, API 호출 70~80%↓, MVP 2개월 출시, 모든 의사결정을 수치로 검증.",
     "동시성·메모리 누수처럼 놓치기 쉬운 보안·성능 디테일도 누락 없이 작업, 휴먼 에러를 시스템 단에서 차단합니다.",
   ],
@@ -135,6 +135,19 @@ export const skillGroups: SkillGroup[] = [
   {
     category: "Experience",
     items: ["Next.js", "Nuxt", "Vue"],
+  },
+  {
+    category: "Backend",
+    items: ["Spring Boot", "Java", "JPA", "MySQL", "Flyway", "JWT · RBAC"],
+  },
+  {
+    category: "Infra",
+    items: [
+      "AWS EC2",
+      "Docker Compose",
+      "Cloudflare Pages · R2 · Workers",
+      "블루-그린 배포",
+    ],
   },
   {
     category: "CSS",
@@ -161,38 +174,58 @@ export const experiences: Experience[] = [
     period: "2026.03 ~ Present",
     duration: tenure(JIGEUMFILM_SINCE),
     team: "대표 2명 · 영상·대본 작업자 35명+",
-    serviceName: "Jigeumfilm Admin",
+    serviceName: "지금필름 어드민 · 자사몰 · 아카이핀",
     serviceDescription:
-      "영상 제작 운영 어드민을 단독 설계·구축. PO 의사결정과 Claude Code(AI 페어)를 결합해 출시.",
+      "제작 운영·판매·아카이브 3개 제품을 단독 설계·구축·운영. 프론트엔드부터 백엔드·인프라까지 전 구간 담당.",
     stack: [
       "React 19",
-      "Vite 8",
+      "Next.js 15",
+      "Vite",
       "TypeScript",
       "Tailwind CSS",
       "Zustand",
       "React Query",
-      "FullCalendar",
-      "Cloudflare Pages",
-      "Railway",
-      "Claude Code",
+      "Spring Boot 3.4",
+      "Java 21",
+      "MySQL · Flyway",
+      "AWS EC2 · Docker Compose",
+      "Cloudflare R2 · Pages",
     ],
     highlights: [
       {
-        title: "Front-end PO + Claude Code 페어 프로그래밍",
+        title: "운영 어드민 풀스택 단독 구축",
         description:
-          "스펙·우선순위·검증을 PO로서 직접 정의. Claude Code를 AI 페어로 활용해 익숙하지 않은 백엔드까지 구축. 모든 코드는 직접 리뷰 후 출시.",
-        metrics: ["AI pair programming", "Front-end → Full-stack solo"],
+          "React 19 + Vite 프론트엔드부터 Spring Boot 3.4 · Java 21 · MySQL 백엔드까지 단독 설계·구현. 4단계 RBAC, 13단계 주문 파이프라인, 네이버 커머스 양방향 동기화(5분 스케줄러 + 웹훅)와 상품 자동 매칭을 운영 중입니다.",
+        metrics: ["Front-end → Full-stack", "RBAC 4롤 · 주문 13단계"],
       },
       {
-        title: "DnD 캘린더 + 작업자 컬러 디자인 시스템",
+        title: "Railway → AWS EC2 이관 · 무중단 배포 구축",
         description:
-          "FullCalendar 월간 뷰 + DnD 배정을 Linear·Notion 톤으로 구현. 작업자 35명+ 고유 컬러를 단일 소스로 관리, 컬러 멘탈 모델 형성.",
-        metrics: ["35+ unique colors", "DnD optimistic update"],
+          "간헐 장애와 원거리 리전 지연(/api/health ttfb 중앙값 0.28s)을 근거로 서울 리전 EC2 + Docker Compose 이관을 설계. 조용히 죽는 급소 5개(prod 프로파일 누락 시 H2 인메모리 부팅, 네이버 IP allowlist, JVM 힙 미설정 등)를 사전 실사해 무사고로 넘긴 뒤 블루-그린 무중단 배포를 붙였습니다.",
+        metrics: ["무사고 컷오버", "블루-그린 무중단 배포"],
+      },
+      {
+        title: "검수 영상 전송 — 표준 HLS 전환 · 원본 병렬 다운로드",
+        description:
+          "대용량 mp4를 직접 서빙하던 반표준 구조를 표준 HLS + ABR + CDN 캐시로 교체해 버퍼링과 아이폰 재생 불가를 해소. R2 원본 다운로드는 단일 스트림 병목을 병렬 처리로 풀었습니다.",
+        metrics: ["원본 다운로드 33×", "iOS 재생 불가 해소"],
+      },
+      {
+        title: "결제 시스템 구축 (포트원)",
+        description:
+          "결제 원장 설계부터 S2S 승인 검증·웹훅 서명 확인·항목 단위 부분 환불·주문 생성 복구 스케줄러까지 구현. PG가 중복 취소를 막아주지 않는다는 점을 확인하고 DB 선점을 앞에 두어 정합성을 확보했습니다.",
+        metrics: ["S2S 검증 · 웹훅 서명", "장바구니 부분 환불"],
+      },
+      {
+        title: "자사몰 — 정적 export 아키텍처 결정",
+        description:
+          "카카오·네이버 크롤러가 JS를 실행하지 않아 SEO·OG에는 완성된 HTML이 필요했습니다. Next.js 15 정적 export로 서버 없이 요구를 만족시키고, 백엔드는 신설하지 않고 기존 Spring API에 공개 엔드포인트만 추가했습니다.",
+        metrics: ["서버 러닝코스트 0", "백엔드 신설 0"],
       },
       {
         title: "인프라 비용 70~80% 절감",
         description:
-          "운영 중 Railway 비용 부담을 발견 → 폴링 제거 + 데이터 신선도 정책 재정의. React Query 캐싱 패턴을 Claude Code와 함께 적용해 API 호출 70~80% 감소.",
+          "운영 중 비용 부담을 발견 → 폴링 제거 + 데이터 신선도 정책 재정의. React Query 캐싱 패턴을 적용해 API 호출을 70~80% 줄였습니다.",
         metrics: ["API 호출 70~80%↓", "인프라 비용 절감"],
       },
     ],
@@ -380,10 +413,10 @@ export type HeroStat = {
 
 /** /dev 히어로 스탯 스트립. 본문 experiences의 metrics에서 발췌한 대표 수치. */
 export const devHeroStats: HeroStat[] = [
+  { value: "3개", label: "단독 설계·구축·운영 중인 제품" },
   { value: "70~80%↓", label: "API 호출 · 인프라 비용 절감" },
+  { value: "33×", label: "R2 원본 다운로드 병목 해소" },
   { value: "37×", label: "이미지 업로드 단축 (4.19s → 111ms)" },
-  { value: "5,000+", label: "리스트 가상화 · 60fps 스크롤" },
-  { value: "2개월", label: "MVP 설계부터 시장 출시까지" },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -409,8 +442,8 @@ export const po = {
     },
     tagline: "개발을 아는 PO — 가설을 코드로 직접 검증하고, 출시로 증명합니다.",
     introduction: [
-      "지금필름 PO로 영상 제작 운영 어드민의 스펙 정의부터 구축·출시까지 단독 수행. 기획서가 아니라 동작하는 제품으로 말합니다.",
-      "우선순위는 데이터로 정합니다. 인프라 비용 70~80% 절감, MVP 2개월 출시, 서비스 첫 매출 — 의사결정을 수치로 검증해 왔습니다.",
+      "지금필름 PO로 제작 운영 어드민·자사 판매몰·신규 아카이브 서비스 3개를 스펙 정의부터 출시·운영까지 단독 수행. 기획서가 아니라 동작하는 제품으로 말합니다.",
+      "우선순위는 데이터로 정합니다. 인프라 비용 70~80% 절감, 결제·환불 원장 설계, 장애를 근거로 한 인프라 이관 승인 — 의사결정을 수치와 사실로 검증해 왔습니다.",
       "프론트엔드 개발자 출신이라 엔지니어와 같은 언어로 말하고, 실현 가능한 스펙을 씁니다.",
     ],
     email: "chldydgus777@kakao.com",
@@ -421,10 +454,10 @@ export const po = {
   } satisfies Profile,
 
   heroStats: [
+    { value: "3개", label: "동시 운영 중인 제품 — 운영 · 판매 · 신규" },
     { value: "2개월", label: "MVP 기획부터 시장 출시까지" },
     { value: "70~80%↓", label: "데이터 정책 재정의로 인프라 비용 절감" },
     { value: "35+", label: "작업자 운영 체계 단독 구축" },
-    { value: "2025.01", label: "결제·구독 모델 구현 — 첫 매출" },
   ] satisfies HeroStat[],
 
   skillGroups: [
@@ -467,22 +500,47 @@ export const po = {
       period: "2026.03 ~ 현재",
       duration: tenure(JIGEUMFILM_SINCE),
       team: "대표 2명 · 영상·대본 작업자 35명+",
-      serviceName: "영상 제작 운영 어드민",
+      serviceName: "지금필름 어드민 · 자사몰 · 아카이핀",
       serviceDescription:
-        "수기·스프레드시트로 돌아가던 제작 운영을 단일 어드민 제품으로 전환 — 기획부터 출시까지 1인 수행.",
-      stack: ["스펙 정의", "우선순위 결정", "Claude Code 페어", "React 19", "운영 지표"],
+        "제작 운영·판매·아카이브 3개 제품을 스펙 정의부터 출시·운영까지 단독 수행.",
+      stack: [
+        "제품 스펙 정의",
+        "우선순위 결정",
+        "수익화 설계",
+        "인프라 의사결정",
+        "Claude Code 페어",
+        "운영 지표",
+      ],
       highlights: [
         {
-          title: "스펙부터 출시까지 — 1인 제품 사이클",
+          title: "목적이 다른 제품 3개를 동시에 운영",
           description:
-            "대표 2명의 요구사항을 스펙·우선순위로 정리하고, Claude Code를 AI 페어로 활용해 직접 구현·출시. 기획↔개발 사이의 전달 손실이 0인 제품 사이클을 운영합니다.",
-          metrics: ["기획 → 출시 단독 수행", "운영 투입까지 2개월"],
+            "수기·스프레드시트로 돌아가던 제작 운영을 어드민 제품으로 전환하고, 이어서 자사 판매몰과 신규 아카이브 서비스를 열었습니다. 세 제품 모두 요구사항 수집·스펙·우선순위·출시·운영을 단독으로 책임집니다.",
+          metrics: ["운영 · 판매 · 신규 3개 제품", "기획 → 출시 단독 수행"],
         },
         {
-          title: "비용 구조를 바꾼 의사결정",
+          title: "인프라 이관 — 비용이 아니라 장애로 설득",
           description:
-            "운영 중 인프라 비용 부담을 발견 → 데이터 신선도 정책을 재정의하고 폴링을 제거. 기능 추가가 아니라 정책 변경으로 문제를 풀었습니다.",
-          metrics: ["API 호출 70~80%↓", "인프라 비용 절감"],
+            "간헐 장애가 반복되자 현행과 대안을 요금·지연·장애 이력 표로 정리해 대표 승인을 받았습니다. 핵심 논거는 절감이 아니라 「장애 제거와 지연 단축」이었고, 늘어나는 비용은 크레딧으로 흡수하는 안을 함께 제시했습니다.",
+          metrics: ["대표 승인 · 무사고 이관", "지연 0.28s → 서울 리전"],
+        },
+        {
+          title: "판매 채널과 수익화 설계",
+          description:
+            "결제·환불 원장을 직접 설계하고 쿠폰·추천인·제휴사 셀프 충전까지 채널을 붙였습니다. 부분 환불처럼 돈이 틀어지는 지점은 PG를 믿지 않고 DB 선점을 앞에 두는 식으로 정책을 먼저 정했습니다.",
+          metrics: ["결제·환불 원장 설계", "쿠폰 · 추천인 · 제휴 채널"],
+        },
+        {
+          title: "표준을 이기려 하지 않는다",
+          description:
+            "대용량 영상을 직접 서빙하던 자체 방식이 버퍼링과 특정 기기 재생 불가를 낳자, 기능을 덧대는 대신 표준 HLS로 갈아탔습니다. 이 판단은 사내 개발 원칙의 모범 사례로 문서화됐습니다.",
+          metrics: ["반표준 → 표준 전환", "사내 원칙 사례 등재"],
+        },
+        {
+          title: "채널 특성에서 아키텍처를 역산",
+          description:
+            "자사몰은 카카오·네이버 유입이 핵심인데 두 크롤러는 JS를 실행하지 않습니다. 이 사실 하나로 정적 export를 택해 SEO·공유 미리보기를 확보하고 서버 러닝코스트를 0으로 만들었습니다.",
+          metrics: ["서버 러닝코스트 0", "백엔드 신설 0"],
         },
         {
           title: "35+ 작업자 운영 체계",
