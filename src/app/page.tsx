@@ -5,43 +5,33 @@ import { profile } from "@/data/resumeData";
 export const metadata: Metadata = {
   title: `${profile.name} (${profile.nameEn}) — Portfolio`,
   description:
-    "프론트엔드 개발자 · Product Owner · 영업관리 DX — 직무별 이력서를 선택해 보세요.",
+    "프론트엔드 개발자 · Product Owner — 직무별 이력서를 선택해 보세요.",
 };
 
 const VERSIONS = [
   {
     href: "/dev",
-    path: "/dev",
     title: "Front-end Developer",
     description: "성능을 수치로 증명하는 프론트엔드 개발자",
-    accent: "text-sky-400",
-    hoverTitle: "group-hover:text-sky-400",
-    hoverCard: "hover:border-sky-500/40 hover:bg-sky-500/5",
+    path: "text-sky-400",
     dot: "bg-sky-400",
+    card: "hover:border-sky-500/40 hover:bg-sky-500/5",
+    titleHover: "group-hover:text-sky-400",
   },
   {
     href: "/po",
-    path: "/po",
     title: "Product Owner",
     description: "스펙 정의부터 출시까지, 개발을 아는 PO",
-    accent: "text-violet-400",
-    hoverTitle: "group-hover:text-violet-400",
-    hoverCard: "hover:border-violet-500/40 hover:bg-violet-500/5",
+    path: "text-violet-400",
     dot: "bg-violet-400",
-  },
-  {
-    href: "/영업관리",
-    path: "/영업관리",
-    title: "영업관리 · DX",
-    description: "영업 현장의 병목을 시스템으로 푸는 영업관리",
-    accent: "text-blue-400",
-    hoverTitle: "group-hover:text-blue-400",
-    hoverCard: "hover:border-blue-500/40 hover:bg-blue-500/5",
-    dot: "bg-blue-400",
+    card: "hover:border-violet-500/40 hover:bg-violet-500/5",
+    titleHover: "group-hover:text-violet-400",
   },
 ];
 
 export default function HomePage() {
+  const year = new Date().getFullYear();
+
   return (
     <div className="relative min-h-screen overflow-x-clip">
       <div
@@ -50,15 +40,11 @@ export default function HomePage() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute right-0 top-1/3 -z-10 h-80 w-80 bg-violet-500/10 blur-3xl"
+        className="pointer-events-none absolute bottom-0 right-0 -z-10 h-80 w-80 bg-violet-500/10 blur-3xl"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute bottom-0 left-0 -z-10 h-80 w-96 bg-blue-600/10 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-sky-500 via-violet-500 to-blue-600"
+        className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-sky-500 to-violet-500"
       />
 
       <main className="mx-auto flex min-h-screen w-full max-w-2xl flex-col justify-center px-6 py-24">
@@ -67,7 +53,7 @@ export default function HomePage() {
             aria-hidden
             className="h-1.5 w-1.5 animate-pulse rounded-full bg-zinc-500"
           />
-          PORTFOLIO · {new Date().getFullYear()}
+          PORTFOLIO · {year}
         </p>
         <h1
           className="enter mt-6 bg-gradient-to-br from-zinc-50 via-zinc-200 to-zinc-500 bg-clip-text text-6xl font-semibold tracking-tight text-transparent sm:text-7xl"
@@ -86,7 +72,7 @@ export default function HomePage() {
           style={{ animationDelay: "240ms" }}
         >
           <span className="font-semibold text-zinc-100">
-            같은 경력, 세 가지 시선.
+            같은 경력, 두 가지 시선.
           </span>{" "}
           보고 싶은 버전을 선택하세요.
         </p>
@@ -97,21 +83,21 @@ export default function HomePage() {
               <li key={version.href}>
                 <Link
                   href={version.href}
-                  className={`enter group flex items-baseline gap-4 rounded-2xl border border-zinc-800/80 bg-zinc-900/30 p-5 transition-colors duration-300 sm:gap-6 sm:p-6 ${version.hoverCard}`}
+                  className={`enter group flex items-baseline gap-4 rounded-2xl border border-zinc-800/80 bg-zinc-900/30 p-5 transition-colors duration-300 sm:gap-6 sm:p-6 ${version.card}`}
                   style={{ animationDelay: `${320 + i * 90}ms` }}
                 >
                   <span
-                    className={`flex w-24 shrink-0 items-baseline gap-2 font-mono text-xs sm:w-28 sm:text-sm ${version.accent}`}
+                    className={`flex w-16 shrink-0 items-baseline gap-2 font-mono text-xs sm:w-20 sm:text-sm ${version.path}`}
                   >
                     <span
                       aria-hidden
                       className={`h-1.5 w-1.5 self-center rounded-full ${version.dot}`}
                     />
-                    {version.path}
+                    {version.href}
                   </span>
                   <span className="min-w-0">
                     <span
-                      className={`block break-keep text-lg font-semibold text-zinc-50 transition-colors sm:text-xl ${version.hoverTitle}`}
+                      className={`block break-keep text-lg font-semibold text-zinc-50 transition-colors sm:text-xl ${version.titleHover}`}
                     >
                       {version.title}
                     </span>
@@ -136,7 +122,7 @@ export default function HomePage() {
           style={{ animationDelay: "620ms" }}
         >
           <span>
-            © {new Date().getFullYear()} {profile.name} ({profile.nameEn})
+            © {year} {profile.name} ({profile.nameEn})
           </span>
           <a
             href="https://github.com/chldydgus777"

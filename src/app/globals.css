@@ -11,19 +11,15 @@ html {
 }
 
 body {
-  @apply bg-ink-950 text-zinc-100 antialiased;
+  @apply bg-zinc-950 text-zinc-100 antialiased;
   font-feature-settings: "ss01", "cv11";
 }
 
 ::selection {
-  @apply bg-accent/30 text-zinc-50;
+  @apply bg-zinc-400/30 text-zinc-50;
 }
 
-.section-divider {
-  @apply h-px w-full bg-gradient-to-r from-transparent via-ink-600 to-transparent;
-}
-
-/* ------------------------------ Motion (/dev) ----------------------------- */
+/* --------------------------------- Motion -------------------------------- */
 
 @keyframes rise {
   from {

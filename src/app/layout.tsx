@@ -5,11 +5,11 @@ import { profile } from "@/data/resumeData";
 export const metadata: Metadata = {
   title: `${profile.name} (${profile.nameEn}) — Portfolio`,
   description:
-    "프론트엔드 개발자 · Product Owner · 영업관리 DX — 최용현 포트폴리오",
+    "프론트엔드 개발자 · Product Owner — 최용현 포트폴리오",
   openGraph: {
     title: `${profile.name} (${profile.nameEn}) — Portfolio`,
     description:
-      "프론트엔드 개발자 · Product Owner · 영업관리 DX — 최용현 포트폴리오",
+      "프론트엔드 개발자 · Product Owner — 최용현 포트폴리오",
     type: "website",
   },
 };
