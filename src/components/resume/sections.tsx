@@ -3,12 +3,14 @@ import type {
   Education,
   HeroStat,
   Profile,
+  SideProject,
 } from "@/data/resumeData";
 import type { ResumeTheme } from "./theme";
 
 export const NAV_LINKS = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
   { href: "#contact", label: "Contact" },
 ];
@@ -146,6 +148,64 @@ export function Section({
       </div>
       {children}
     </section>
+  );
+}
+
+export function ProjectsSection({
+  theme,
+  projects,
+}: {
+  theme: ResumeTheme;
+  projects: SideProject[];
+}) {
+  return (
+    <div className="divide-y divide-zinc-800/80 border-y border-zinc-800/80">
+      {projects.map((project) => (
+        <article
+          key={project.name}
+          aria-label={project.name}
+          className="reveal grid gap-4 py-8 sm:grid-cols-[180px_1fr] sm:gap-10 sm:py-10"
+        >
+          <p className="font-mono text-xs tabular-nums leading-relaxed text-zinc-500">
+            {project.period}
+          </p>
+          <div className="min-w-0">
+            <h3 className="break-keep text-lg font-semibold text-zinc-50 sm:text-xl">
+              {project.name}
+              <span className="ml-2.5 break-keep text-sm font-normal text-zinc-500">
+                {project.tagline}
+              </span>
+            </h3>
+            <p className="mt-2 break-keep text-sm leading-relaxed text-zinc-400 sm:text-[15px]">
+              {project.description}
+            </p>
+
+            <ul className="mt-5 space-y-2.5">
+              {project.decisions.map((decision) => (
+                <li
+                  key={decision}
+                  className="flex gap-2.5 break-keep text-sm leading-relaxed text-zinc-400"
+                >
+                  <span
+                    aria-hidden
+                    className={`mt-[0.5rem] h-1 w-1 shrink-0 rounded-full ${theme.accentDot}`}
+                  />
+                  <span>{decision}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p
+              aria-label={`${project.name} 사용 기술`}
+              className="mt-5 break-keep font-mono text-xs leading-relaxed text-zinc-500"
+            >
+              <span className="text-zinc-600">stack / </span>
+              {project.stack.join(" · ")}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
   );
 }
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   ContactSection,
   EducationSection,
+  ProjectsSection,
   isCurrent,
   ResumeFooter,
   ResumeHero,
@@ -17,6 +18,7 @@ import {
   education,
   certifications,
   devHeroStats,
+  sideProjects,
   type Experience,
   type PreviousCareer,
 } from "@/data/resumeData";
@@ -77,7 +79,11 @@ export default function DevResumePage() {
           </div>
         </Section>
 
-        <Section theme={devTheme} id="skills" index="03" title="Skills">
+        <Section theme={devTheme} id="projects" index="03" title="Projects">
+          <ProjectsSection theme={devTheme} projects={sideProjects} />
+        </Section>
+
+        <Section theme={devTheme} id="skills" index="04" title="Skills">
           <dl className="border-y border-zinc-800/80 divide-y divide-zinc-800/80">
             {skillGroups.map((group) => (
               <div
@@ -95,7 +101,7 @@ export default function DevResumePage() {
           </dl>
         </Section>
 
-        <Section theme={devTheme} id="before" index="04" title="Previous Career">
+        <Section theme={devTheme} id="before" index="05" title="Previous Career">
           {previousCareers.map((career) => (
             <PreviousCareerEntry key={career.company} career={career} />
           ))}
@@ -104,7 +110,7 @@ export default function DevResumePage() {
         <Section
           theme={devTheme}
           id="education"
-          index="05"
+          index="06"
           title="Education & Certifications"
         >
           <EducationSection
@@ -113,7 +119,7 @@ export default function DevResumePage() {
           />
         </Section>
 
-        <Section theme={devTheme} id="contact" index="06" title="Contact">
+        <Section theme={devTheme} id="contact" index="07" title="Contact">
           <ContactSection theme={devTheme} profile={profile} />
         </Section>
 

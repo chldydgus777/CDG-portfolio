@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   ContactSection,
   EducationSection,
+  ProjectsSection,
   isCurrent,
   ResumeFooter,
   ResumeHero,
@@ -11,6 +12,7 @@ import {
 import { poTheme } from "@/components/resume/theme";
 import {
   po,
+  sideProjects,
   type Experience,
   type PreviousCareer,
 } from "@/data/resumeData";
@@ -81,7 +83,11 @@ export default function PoResumePage() {
           </div>
         </Section>
 
-        <Section theme={poTheme} id="skills" index="03" title="Skills">
+        <Section theme={poTheme} id="projects" index="03" title="Projects">
+          <ProjectsSection theme={poTheme} projects={sideProjects} />
+        </Section>
+
+        <Section theme={poTheme} id="skills" index="04" title="Skills">
           <dl className="reveal divide-y divide-zinc-800/80 rounded-2xl border border-zinc-800/80 bg-zinc-900/30 px-6 sm:px-8">
             {skillGroups.map((group) => (
               <div
@@ -99,7 +105,7 @@ export default function PoResumePage() {
           </dl>
         </Section>
 
-        <Section theme={poTheme} id="before" index="04" title="Previous Career">
+        <Section theme={poTheme} id="before" index="05" title="Previous Career">
           {previousCareers.map((career) => (
             <PreviousCareerCard key={career.company} career={career} />
           ))}
@@ -108,7 +114,7 @@ export default function PoResumePage() {
         <Section
           theme={poTheme}
           id="education"
-          index="05"
+          index="06"
           title="Education & Certifications"
         >
           <EducationSection
@@ -117,7 +123,7 @@ export default function PoResumePage() {
           />
         </Section>
 
-        <Section theme={poTheme} id="contact" index="06" title="Contact">
+        <Section theme={poTheme} id="contact" index="07" title="Contact">
           <ContactSection theme={poTheme} profile={profile} />
         </Section>
 
